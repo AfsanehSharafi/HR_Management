@@ -10,5 +10,6 @@ namespace MVC.Contracts
         Task<Response<int>> CreateLeaveType(LeaveTypeVM leaveType);
         Task<Response<int>> UpdateLeaveType(int id, LeaveTypeVM leaveType);
         Task<Response<int>> DeleteLeaveType(int id);
+
     }
 }
