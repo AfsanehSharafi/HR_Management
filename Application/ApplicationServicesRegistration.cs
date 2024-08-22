@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.Configuration;
+﻿using Application.Features.LeaveTypes.Requests.Queries;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using System.Reflection;
 
@@ -10,6 +11,7 @@ namespace Application
         {
             // services.AddAutoMapper(typeof(MappingProfile));
             services.AddAutoMapper(Assembly.GetExecutingAssembly());
+            services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(typeof(GetLeaveTypeListRequest).Assembly));
         }
     }
 }

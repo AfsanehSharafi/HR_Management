@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using MVC.Contracts;
+using MVC.Models;
 
 namespace MVC.Controllers
 {
@@ -33,38 +34,55 @@ namespace MVC.Controllers
         // POST: LeaveTypesController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
+        public async Task<ActionResult> Create(CreateLeaveTypeVM createLeave)
         {
             try
             {
-                return RedirectToAction(nameof(Index));
+                var response = await _leaveTypeService.CreateLeaveType(createLeave);
+                if (response.Success)
+                {
+                    return RedirectToAction("Index");
+                }
+                ModelState.AddModelError("", response.ValidationErrors);
+
             }
-            catch
+            catch (Exception ex)
             {
-                return View();
+                ModelState.AddModelError("", ex.Message);
+
+
             }
+            return View(createLeave);
         }
 
-        // GET: LeaveTypesController/Edit/5
-        public ActionResult Edit(int id)
+        public async Task<ActionResult> Edit(int id)
         {
-            return View();
+            var leaveType = await _leaveTypeService.GetLeaveTypeDetails(id);
+            return View(leaveType);
         }
 
         // POST: LeaveTypesController/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
+        public async Task<ActionResult> Edit(int id, LeaveTypeVM leaveType)
         {
             try
             {
-                return RedirectToAction(nameof(Index));
+                var response = await _leaveTypeService.UpdateLeaveType(id, leaveType);
+                if (response.Success)
+                {
+                    return RedirectToAction("Index");
+                }
+                ModelState.AddModelError("", response.ValidationErrors);
+
             }
-            catch
+            catch (Exception ex)
             {
-                return View();
+                ModelState.AddModelError("", ex.Message);
             }
+            return View(leaveType);
         }
+
 
         // GET: LeaveTypesController/Delete/5
         public ActionResult Delete(int id)
