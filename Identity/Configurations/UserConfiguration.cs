@@ -18,7 +18,7 @@ namespace Identity.Configurations
             builder.HasData(
                      new ApplicationUser
                      {
-                         Id= "0b2544ccddb5fa43",
+                         Id= "d9101822-1bb1-4e65-adf9-d9451b65c635",
                          Email="Admin@localhost.com",
                          NormalizedEmail="ADMIN@LOCALHOST.COM",
                          FirstName="Admin",
@@ -31,7 +31,7 @@ namespace Identity.Configurations
 
                      new ApplicationUser
                      {
-                         Id = "f752b721688d256580",
+                         Id = "83dba700-a83b-44fd-b97e-7b5942ef1d83",
                          Email = "user@localhost.com",
                          NormalizedEmail = "USER@LOCALHOST.COM",
                          FirstName = "System",

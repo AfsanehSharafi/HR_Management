@@ -16,13 +16,13 @@ namespace Identity.Configurations
             builder.HasData(
                 new IdentityUserRole<string>
                 {
-                    UserId= "ad7fa1aa-3bd2-4d49-a854-39c8b51e85aa",
+                    UserId= "d9101822-1bb1-4e65-adf9-d9451b65c635",
                     RoleId= "620288e5-ac30-4751-a24c-29d3f432a666"
                 },
 
                 new IdentityUserRole<string>
                 {
-                    UserId = "e770632f-31b4-4ec6-8871-92bf0a26c1e9",
+                    UserId = "83dba700-a83b-44fd-b97e-7b5942ef1d83",
                     RoleId = "9c95a9ce-059c-4ace-b1e0-500c24d0e859"
                 }
                 );
