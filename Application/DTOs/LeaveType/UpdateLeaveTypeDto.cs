@@ -12,7 +12,7 @@ namespace Application.DTOs.LeaveType
         public string Name { get; set; }
         public int DefaultDay { get; set; }
 
-        public static implicit operator UpdateLeaveTypeDto(LeaveTypeDto v)
+        public static implicit operator UpdateLeaveTypeDto(LeaveTypeDto leaveTypeDto)
         {
             throw new NotImplementedException();
         }

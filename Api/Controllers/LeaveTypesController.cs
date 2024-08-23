@@ -51,8 +51,9 @@ namespace Api.Controllers
         public async Task<ActionResult> Put(int id, [FromBody] LeaveTypeDto leaveType)
         {
             var command = new UpdateLeaveTypeCommand { LeaveTypeDto = leaveType };
-            await _mediator.Send(command);
-            return NoContent();
+            //await _mediator.Send(command);
+            var response = await _mediator.Send(command);
+            return Ok(response);
         }
 
         // DELETE api/<LeaveTypesController>/5
