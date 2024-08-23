@@ -20,9 +20,10 @@ namespace MVC.Controllers
         }
 
         // GET: LeaveTypesController/Details/5
-        public ActionResult Details(int id)
+        public async Task<ActionResult> Details(int id)
         {
-            return View();
+            var leaveType = await _leaveTypeService.GetLeaveTypeDetails(id);
+            return View(leaveType);
         }
 
         // GET: LeaveTypesController/Create
@@ -84,6 +85,7 @@ namespace MVC.Controllers
         }
 
 
+
         // GET: LeaveTypesController/Delete/5
         public ActionResult Delete(int id)
         {
@@ -93,16 +95,23 @@ namespace MVC.Controllers
         // POST: LeaveTypesController/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
+        public async Task<ActionResult> Delete(int id, LeaveTypeVM leaveTypeVM)
         {
             try
             {
-                return RedirectToAction(nameof(Index));
+                var response = await _leaveTypeService.DeleteLeaveType(id);
+                if (response.Success)
+                {
+                    return RedirectToAction("Index");
+                }
+                ModelState.AddModelError("", response.ValidationErrors);
+
             }
-            catch
+            catch (Exception ex)
             {
-                return View();
+                ModelState.AddModelError("", ex.Message);
             }
+            return BadRequest();
         }
     }
 }
