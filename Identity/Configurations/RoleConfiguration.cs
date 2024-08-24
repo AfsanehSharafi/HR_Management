@@ -17,14 +17,14 @@ namespace Identity.Configurations
             builder.HasData(
                 new IdentityRole
                 {
-                    Id = "9c95a9ce-059c-4ace-b1e0-500c24d0e859",
+                    //Id = "9c95a9ce-059c-4ace-b1e0-500c24d0e859",
                     Name = "Employee",
                     NormalizedName = "EMPLOYEE",
                 },
 
                 new IdentityRole
                 {
-                    Id = "620288e5-ac30-4751-a24c-29d3f432a666",
+                    //Id = "620288e5-ac30-4751-a24c-29d3f432a666",
                     Name = "Administrator",
                     NormalizedName = "ADMINISTRATOR",
                 }
